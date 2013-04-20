@@ -1,42 +1,35 @@
 (ns brain.lab.function)
 
-(defn make-relation [rel-name])
 
-(defn relation [rel-name]
+
+(defn entity-type [entity type]
+  (if ( = (:type entity ) type)
+    true false
+    )
+  )
+
+(defn get-entity [] {:gender "male"})
+
+
+(defn save-relation [entity-1 relation entity-2]
+  (println "relation saved")
   
   )
 
-;(Batman killed Bane and escaped from Gotham city)
-;(Barack Obama was elected as the 44th president of United States of America)
-;(who killed bane ?)
 
-(defmacro who [& args]
-  
+(defn brother [entity1 entity2]
+  (if (= "male" (entity-type entity1))
+    (save-relation entity1 "brother" entity2)
+    )
+  (println entity1 "brother of" entity2)
   )
 
-(defn when [& args])
+(defn relation [str-entity-1 function str-entity-2]
+  (println (function (get-entity str-entity-1) (get-entity str-entity-2)))
 
-(defn how [& args])
+  )
 
-(defn what [& args])
+;(relation "Tom Cruise" is the brother of "Mathew Cruise")
 
-(defn why [& args])
 
-(defn which [& args])
-
-(defn where [& args])
-
-(defn whose[])
-(defn whom[])
-
-;define types
-(defn entity[])
-;entity types
-(defn location [])
-(defn person [])
-(defn event[])
-;entity descriptors
-(defn name[])
-(defn distance[])
-(defn cost[])
-;description of entity given condition
+(def sister "sister")
